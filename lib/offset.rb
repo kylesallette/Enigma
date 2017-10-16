@@ -4,27 +4,30 @@ class OffSet
   attr_accessor :date
 
 
-  def initialize(date = Time.now.strftime("%d%m%y"))
-    @date = date
+  def initialize(date = "ddmmyy")
+    @date = Time.now.strftime("%d%m%y")
+    @date_squared = date_squared
+    @offset_rotations = offset_rotations
   end
 
   def date_squared
     date = []
-    squared =  @date
+    squared = @date
     date << squared.to_i ** 2
-    @date = date.join("")
+    @date_squared = date.join("")
   end
 
 
 
   def offset_rotations
    offset_rotation = []
-   offset_rotation.push(@date[-4].to_i)
-   offset_rotation.push(@date[-3].to_i)
-   offset_rotation.push(@date[-2].to_i)
-   offset_rotation.push(@date[-1].to_i)
-   @date = offset_rotation
+   offset_rotation.push(@date_squared[-4].to_i)
+   offset_rotation.push(@date_squared[-3].to_i)
+   offset_rotation.push(@date_squared[-2].to_i)
+   offset_rotation.push(@date_squared[-1].to_i)
+   @offset_rotations = offset_rotation
   end
 
 
 end
+offset = OffSet.new

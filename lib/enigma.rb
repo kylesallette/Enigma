@@ -2,13 +2,7 @@
 require_relative "offset"
 require_relative "key_generator"
 
-
-
-
-
-
 class Enigma
-
 
   def keygen
     keygen  = KeyGenerator.new
