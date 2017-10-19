@@ -1,30 +1,37 @@
-class OffSet
+require_relative "./key_generator"
+require_relative "./encrypt"
 
 
-  attr_accessor :date
+class Offset
+
+ attr_accessor :date
 
 
-  def initialize(date = Time.now.strftime("%d%m%y"))
-    @date = date
+  def initialize(date = "ddmmyy")
+   @date = Time.now.strftime("%d%m%y")
+   @squared = date_squared
   end
 
   def date_squared
-    date = []
-    squared =  @date
-    date << squared.to_i ** 2
-    @date = date.join("")
+   date = []
+   squared = @date
+   date << squared.to_i ** 2
+   date.join("")
   end
 
-
-
-  def offset_rotations
-   offset_rotation = []
-   offset_rotation.push(@date[-4].to_i)
-   offset_rotation.push(@date[-3].to_i)
-   offset_rotation.push(@date[-2].to_i)
-   offset_rotation.push(@date[-1].to_i)
-   @date = offset_rotation
+  def offset_a
+   @squared[-4].to_i
   end
 
+  def offset_b
+   @squared[-3].to_i
+  end
 
+  def offset_c
+   @squared[-2].to_i
+  end
+
+  def offset_d
+   @squared[-1].to_i
+  end
 end
